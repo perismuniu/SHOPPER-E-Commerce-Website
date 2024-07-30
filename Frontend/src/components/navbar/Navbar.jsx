@@ -7,7 +7,7 @@ const Navbar = () => {
     const currentPath = location.pathname; // Store the current path
 
     return (
-        <div className="flex justify-around shadow-custom mb-5 font-Poppins">
+        <div className="flex justify-around shadow-custom font-Poppins">
             <div className="flex flex-row">
                 <img className="h-12 my-auto mb-5 mt-5" src={logo} alt=""/>
                 <p className="mt-8 ml-1 font-bold">SHOPPER</p>

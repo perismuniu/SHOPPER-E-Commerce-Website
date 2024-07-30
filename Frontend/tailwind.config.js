@@ -19,7 +19,10 @@ export default {
       },
       boxShadow: {
         'custom': '0 1px 4px -2px black',
-      }
+      },
+      backgroundImage: {
+        'custom-gradient': 'linear-gradient(180deg, #fde1ff, #e1ffea22)',
+      },
     },
   },
   plugins: [
