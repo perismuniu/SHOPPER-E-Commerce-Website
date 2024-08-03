@@ -23,6 +23,9 @@ export default {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(180deg, #fde1ff, #e1ffea22)',
       },
+      height: {
+        '90vh': '90vh',
+      },
     },
   },
   plugins: [

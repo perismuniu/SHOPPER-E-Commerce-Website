@@ -9,7 +9,6 @@ import LoginSignup from './components/pages/LoginSignup.jsx';
 function App() {
   return (
     <BrowserRouter>
-      {/* Render Navbar only once, outside the Routes */}
       <Navbar />
       <Routes>
         <Route path='/' element={<Shop />} />
