@@ -7,7 +7,7 @@ const Navbar = () => {
     const currentPath = location.pathname;
 
     return (
-        <div className="flex flex-col lg:flex-row justify-between items-center shadow-custom font-Poppins p-4 lg:p-0">
+        <div className="flex justify-around shadow-custom font-Poppins">
             <div className="flex flex-row items-center">
                 <img className="h-12" src={logo} alt="logo"/>
                 <p className="ml-2 font-bold text-lg lg:text-xl">SHOPPER</p>
