@@ -3,7 +3,7 @@ import Item from '../item/Item'
 
 const NewCollections = () => {
   return (
-    <div className="flex flex-col items-center h-90vh ">
+    <div className="flex flex-col items-center mb-28 ">
         <h1 className="text-gray-600 font-semibold text-2xl mt-5">NEW COLLECTIONS</h1>
         <hr className="w-64 rounded-lg border-gray-600 border-2"/>
         <div className="mt-14  gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
