@@ -8,7 +8,7 @@ const ShopCategory = (props) => {
   const {all_products} = useContext(ShopContext)
 
   return (
-    <div>
+    <div className="font-Poppins">
       <img src={props.banner} alt="Banners" className="block my-8 mx-8 w-11/12"/>
       <div className="flex my-0 mx-8 justify-between items-center">
         <p>

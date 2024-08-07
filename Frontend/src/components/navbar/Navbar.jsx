@@ -7,14 +7,14 @@ const Navbar = () => {
     const currentPath = location.pathname;
 
     return (
-        <div className="flex justify-around shadow-custom font-Poppins">
+        <div className="flex justify-around shadow-custom font-Poppins py-2">
             <div className="flex flex-row items-center">
                 <img className="h-12" src={logo} alt="logo"/>
                 <p className="ml-2 font-bold text-lg lg:text-xl">SHOPPER</p>
             </div>
 
             <div className="mt-4 lg:mt-0">
-                <ul className="flex flex-col lg:flex-row lg:items-center text-base text-gray-600 font-medium space-y-4 lg:space-y-0 lg:space-x-6">
+                <ul className="flex flex-col lg:flex-row lg:items-center text-base text-gray-600 font-medium space-y-4 lg:space-y-0 lg:space-x-6 py-2">
                     <li className={`flex flex-col items-center cursor-pointer ${currentPath === '/' ? 'text-red-500' : ''}`}>
                         <Link to='/'>Shop</Link>
                         {currentPath === '/' && <hr className="border-none w-4/5 h-1 rounded-lg bg-red-500"/>}
