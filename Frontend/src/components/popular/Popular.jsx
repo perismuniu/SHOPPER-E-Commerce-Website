@@ -3,7 +3,7 @@ import Item from '../item/Item.jsx'
 
 const Popular = () => {
   return (
-    <div className="flex flex-col items-center h-90vh">
+    <div className="flex flex-col items-center h-90vh min-w-screen">
       <h1 className="text-gray-600 font-semibold text-2xl mt-5">POPULAR IN WOMEN</h1>
       <hr className="w-64 rounded-lg border-gray-600 border-2"/>
       <div className="mt-14 flex gap-6 ">

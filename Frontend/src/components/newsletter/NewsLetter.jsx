@@ -1,5 +1,3 @@
-
-
 const NewsLetter = () => {
   return (
     <div className="h-40vh flex flex-col items-center justify-center m-auto py-0 px-36 bg-orange-50 mb-40 gap-8 min-w-screen">
@@ -11,7 +9,7 @@ const NewsLetter = () => {
             type="email" 
             placeholder="Your email id"
          />
-        <button className="w-210 rounded-3xl bg-black text-white text-base cursor-pointer h-12" >Subscribe</button>
+        <button className="w-210 rounded-3xl bg-black text-white text-base cursor-pointer h-12 font-bold" >Subscribe</button>
       </div>
     </div>
   )
