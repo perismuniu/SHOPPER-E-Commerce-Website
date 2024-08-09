@@ -7,7 +7,7 @@ const ProductDisplay = (props) => {
   return (
     <div className="font-Poppins flex my-[0px] mx-[170px]">
 
-      <div className="flex gap-[17px] w-11/12">
+      <div className="flex gap-[17px] w-full">
         <div className="flex flex-col gap-[16px]">
             <img className="h-[163px]" src={product.image} alt=""/>
             <img className="h-[163px]" src={product.image} alt=""/>

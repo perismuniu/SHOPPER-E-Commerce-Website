@@ -5,7 +5,8 @@ const Item = (props) => {
   return (
     <div className="w-80 transform hover:scale-105 transition duration-600">
       <Link to={`/product/${props.id}`}>
-        <img 
+        <img
+        onClick={window.scrollTo(0,0)} //used to scroll to the product page when items are clicked in the Related products section of the products page
           className="h-64 w-64 flex justify-around mx-auto" 
           src={props.image} 
           alt=""
