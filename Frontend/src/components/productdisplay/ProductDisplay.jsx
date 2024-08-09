@@ -5,7 +5,7 @@ import star_dull_icon from '../assets/star_dull_icon.png'
 const ProductDisplay = (props) => {
     const {product} = props
   return (
-    <div className="font-Poppins flex my-[0px] mx-[170px] mb-10">
+    <div className="font-Poppins flex my-[0px] mx-[170px]">
 
       <div className="flex gap-[17px] w-11/12">
         <div className="flex flex-col gap-[16px]">
