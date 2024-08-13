@@ -1,10 +1,13 @@
 import { useLocation, Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import cart_icon from '../assets/cart_icon.png';
+import { ShopContext } from '../../context/ShopContext';
+import { useContext } from 'react';
 
 const Navbar = () => {
     const location = useLocation();
     const currentPath = location.pathname;
+    const {getTotalCartItems} = useContext(ShopContext)
 
     return (
         <div className="flex justify-around shadow-custom font-Poppins py-2">
@@ -40,7 +43,10 @@ const Navbar = () => {
                 </Link>
                 <Link to='/cart' className="relative">
                     <img src={cart_icon} alt="cart" className="h-9"/>
-                    <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-bold">0</div>
+                    <div 
+                    className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-red-500 text-white text-xs flex items-center justify-center font-bold">
+                        {getTotalCartItems()}
+                    </div>
                 </Link>
             </div>
         </div>

@@ -1,8 +1,10 @@
+import CartItems from "../cartitems/CartItems"
 
 
 const Cart = () => {
   return (
     <div>
+      <CartItems />
       
     </div>
   )
