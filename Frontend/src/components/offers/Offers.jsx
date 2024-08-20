@@ -2,19 +2,35 @@ import exclusive_image from '../assets/exclusive_image.png';
 
 const Offers = () => {
   return (
-    <div className="min-h-screen min-w-screen bg-orange-50 bg-cover font-Poppins flex items-center justify-around">
-      <div className="flex flex-col justify-center leading-none">
-        <h1 className="text-red-500 font-semibold text-2xl">Exclusive</h1>
-        <h1 className="text-red-500 font-semibold text-2xl">Offers For You</h1>
-        <p className="text-gray-800 text-2xl font-semibold mt-4">ONLY ON BEST SELLERS PRODUCTS</p>
-        <button className="flex justify-center items-center gap-2 sm:gap-3.5 w-48 sm:w-60 h-12 sm:h-14 rounded-3xl mt-5 sm:mt-7 bg-red-500 text-white text-base sm:text-lg font-bold">Check Now</button>
+    <div className="flex flex-row md:flex-row bg-orange-50 mx-auto w-full max-w-6xl p-4 md:p-8">
+      <div className="flex-1 flex flex-col justify-center gap-4 px-4 md:px-8 text-center md:text-left">
+        <h2 className="text-red-500 text-xl sm:text-2xl md:text-3xl font-semibold">
+          EXCLUSIVE
+        </h2>
+        <h2 className="text-red-500 text-xl sm:text-2xl md:text-3xl font-semibold">
+          OFFERS FOR YOU
+        </h2>
+        <p className="text-gray-800 text-xl sm:text-2xl md:text-3xl font-semibold mt-4 mb-1">
+          ONLY ON BEST
+        </p>
+        <p className="text-gray-800 text-xl sm:text-2xl md:text-3xl font-semibold mt-4 md:mb-4">
+          SELLERS PRODUCTS
+        </p>
+        <div className="flex justify-center md:justify-start mt-5 md:mt-7">
+          <button className="flex items-center justify-center gap-3 sm:gap-4 md:gap-4 w-36 sm:w-40 md:w-48 h-10 sm:h-12 md:h-14 rounded-3xl bg-red-500 text-white text-sm sm:text-base md:text-lg font-bold">
+            Check Now
+          </button>
+        </div>
       </div>
-      <div>
-        <img className="flex items-center justify-center flex-1 h-auto w-96 mt-2" src={exclusive_image} alt=""/>
-
+      <div className="flex justify-center items-center mt-6 md:mt-0">
+        <img 
+          className="h-[250px] sm:h-[300px] md:h-[600px] object-cover" 
+          src={exclusive_image} 
+          alt="Exclusive Offers"
+        />
       </div>
     </div>
   )
 }
 
-export default Offers
+export default Offers;

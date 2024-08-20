@@ -9,7 +9,7 @@ const ShopCategory = (props) => {
 
   return (
     <div className="font-Poppins mx-auto">
-      <img src={props.banner} alt="Banners" className="block my-8 mx-8 w-11/12"/>
+      <img src={props.banner} alt="Banners" className="block my-8 mx-8 w-11/12 "/>
       <div className="flex my-0 mx-8 justify-between items-center">
         <p>
           <span className="font-bold">Showing 1 -12</span> out of 36 products
@@ -37,7 +37,7 @@ const ShopCategory = (props) => {
         })}
       </div>
 
-      <div className="flex justify-center items-center mx-auto my-40 w-60 h-20 rounded-full bg-gray-100 font-bold text-lg">
+      <div className="flex justify-center items-center mx-auto my-20 sm:my-40 w-40 h-12 sm:w-60 sm:h-20 rounded-full bg-gray-100 font-bold text-sm sm:text-lg text-gray-600">
         <button>Explore More</button>
       </div>
     </div>
