@@ -5,22 +5,26 @@ import { useState } from 'react'
 const AddProduct = () => {
 
   const [image, setImage] = useState(false); //used to show image of the uploaded product
+
+//Add products to database
   const [productDetails,setProductDetails] = useState({
     name:"",
     image:"",
     category:"women",
     new_price:"",
     old_price:"",
-  })//Add products to database
+  })
 
   const imageHandler = (e) => {
     setImage(e.target.files[0]);
   }
 
+  //Add to all input fields type text and select tag 
   const changeHandler = (e) => {
-    setProductDetails({...productDetails,[e.target.name]:[e.target.value]});
-  }//Add to all input fields type text and select tag 
+    setProductDetails({...productDetails,[e.target.name]:e.target.value});
+  }
 
+  //Use in button tag - Used to add product in the backend
   const Add_Product = async () => {
     console.log(productDetails);
     let responseData;  
@@ -40,8 +44,18 @@ const AddProduct = () => {
     {
       product.image = responseData.image_url;
       console.log(product);
+      await fetch('http://localhost:4000/addproduct',{
+        method:'POST',
+        headers:{
+          Accept:'application/json',
+          'Content-Type':'application/json',
+        },
+        body:JSON.stringify(product),
+      }).then((resp)=>resp.json()).then((data)=>{
+        data.success?alert("Product Added"):alert("Failed")
+      })
     }
-  }//Use in button tag
+  }
 
   return (
     <div className="add-product">
