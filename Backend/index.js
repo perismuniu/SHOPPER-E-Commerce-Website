@@ -8,6 +8,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const { error } = require("console");
+const { type } = require("os");
 
 app.use(express.json());
 app.use(cors()); //connect express to port 400
@@ -31,7 +32,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage})
 
 //creating Upload endpoint for images
-
 app.use('/images',express.static('upload/images'))
 
 app.post("/upload",upload.single('product'),(req,res)=>{
@@ -42,7 +42,6 @@ app.post("/upload",upload.single('product'),(req,res)=>{
 })
 
 //Schema for creating products
-
 const Product = mongoose.model("Product",{
     id:{
         type:Number,
@@ -109,7 +108,6 @@ app.post('/addproduct',async (req,res)=>{
 })
 
 //Creating API for deleting products
-
 app.post('/removeproduct',async (req,res)=>{
     await Product.findOneAndDelete({id:req.body.id});
     console.log("Removed");
@@ -120,11 +118,86 @@ app.post('/removeproduct',async (req,res)=>{
 })
 
 //Creating API for getting all products
-
 app.get('/allproducts',async (req,res)=>{
     let products = await Product.find({});
     console.log("All Products Fetched");
         res.send(products);
+})
+
+//Schema for creating user model
+const Users = mongoose.model('Users', {
+    name:{
+        type:String,
+    },
+    email:{
+        type:String,
+        unique:true,
+    },
+    password:{
+        type:String,
+    },
+    CartData:{
+        type:Object,
+    },
+    date:{
+        type:Date,
+        default:Date.now,
+    }
+})
+
+//Creating Endpoint for registering a user
+app.post('/signup', async (req,res) => {
+    
+    let check = await Users.findOne({email:req.body.email});
+    if (check) {
+        return res.status(400).json({success:false,errors:"Existing user found with the same email address"})
+    }
+
+    let cart = {};
+    for (let i = 0; i < 300; i++) {
+        cart[i] = 0;     
+    }
+
+    const user = new Users({
+        name:req.body.username,
+        email:req.body.email,
+        password:req.body.password,
+        cartData:cart,
+    })
+
+    await user.save();
+
+    const data = {
+        user:{
+            id:user.id
+        }
+    }
+
+    const token = jwt.sign(data, 'secret_ecom');
+    res.json({success:true,token})
+})
+
+//Creating endpoint for user login
+app.post('/login',async (req,res) =>{
+    let user = await Users.findOne({email:req.body.email});
+    if (user) {
+        const passCompare = req.body.password === user.password;
+        if (passCompare) {
+            const data = {
+                user:{
+                    id:user.id
+                }
+            }
+            const token = jwt.sign(data,'secret_ecom');
+            res.json({success:true,token});
+        }
+        else {
+            res.json({success:false,errors:"Wrong Password"});
+        }
+    }
+    else {
+        res.json({success:false,errors:"Wrong Email Id"});
+    }
 })
 
 app.listen(port, (error)=>{
