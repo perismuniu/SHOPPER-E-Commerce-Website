@@ -253,9 +253,10 @@ app.post('/addtocart',fetchUser,async (req,res) => {
     let userData = await Users.findOne({_id:req.user.id});
 
     // Initialize cartData if undefined or initialize itemId if it doesn't exist
-    userData.cartData = userData.cartData || {};
-    userData.cartData[req.body.itemId] = (userData.cartData[req.body.itemId] || 0) + 1;
-    await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    userData.CartData = userData.CartData || {};
+    userData.CartData[req.body.itemId] = (userData.CartData[req.body.itemId] || 0) + 1;
+    await Users.findOneAndUpdate({_id:req.user.id},{CartData:userData.CartData});
+    console.log(userData.CartData);
     res.send("Added");
 })
 
@@ -265,18 +266,18 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
     let userData = await Users.findOne({ _id: req.user.id });
 
     // Check if cartData exists and if the item exists in cartData
-    userData.cartData = userData.cartData || {};
+    userData.CartData = userData.CartData || {};
 
-    if (userData.cartData[req.body.itemId]) {
+    if (userData.CartData[req.body.itemId]) {
         // Decrement the item count
-        userData.cartData[req.body.itemId] -= 1;
+        userData.CartData[req.body.itemId] -= 1;
 
         // If the item count drops to zero or below, remove the item from cartData
-        if (userData.cartData[req.body.itemId] <= 0) {
-            delete userData.cartData[req.body.itemId];
+        if (userData.CartData[req.body.itemId] <= 0) {
+            delete userData.CartData[req.body.itemId];
         }
 
-        await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+        await Users.findOneAndUpdate({ _id: req.user.id }, { CartData: userData.CartData });
         res.send("Removed");
     } else {
         // If the item doesn't exist in the cart
@@ -285,24 +286,11 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
 });
 
 //Creating endpoint to get cartdata
-/*app.post('/getcart',fetchUser,async (req,res) => {
+app.post('/getcart',fetchUser,async (req,res) => {
     console.log("Get cart");
     let userData = await Users.findOne({_id:req.user.id});
-    res.json(userData.cartData);
-})*/
-app.post('/getcart', fetchUser, async (req, res) => {
-    try {
-        console.log("Get cart");
-        let userData = await Users.findOne({ _id: req.user.id });
-        if (!userData) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.json(userData.cartData);
-    } catch (error) {
-        console.error('Error retrieving cart data:', error);
-        res.status(500).json({ message: "Internal Server Error" });
-    }
-});
+    res.json(userData.CartData);
+})
 
 
 // Start the server on the defined port
